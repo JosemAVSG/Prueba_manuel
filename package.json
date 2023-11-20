@@ -2,7 +2,7 @@
   "name": "studious-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "http://JosemAVSG.github.io/studious-octo-fortnight",
+  "homepage": "http://JosemAVSG.github.io/Prueba_manuel",
   "type": "module",
   "scripts": {
     "predeploy":"npm run build",
