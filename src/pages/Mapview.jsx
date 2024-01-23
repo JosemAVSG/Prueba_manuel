@@ -5,7 +5,7 @@ const Mapview = () => {
     "pk.eyJ1IjoibWFuYWJsIiwiYSI6ImNscDNhYndybDAyNGUyc3FsanczemlnNTEifQ.RgfileEGXN3aAoP-dAQd3A";
 
   return (
-    <div>
+    <div className="map">
       <MapContainer Token={API_KEY}></MapContainer>
     </div>
   );

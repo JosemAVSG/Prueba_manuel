@@ -8,8 +8,8 @@ import {
 } from "../redux/actions";
 import Pagination from "./PaginationComponent";
 import pokeball from "../assets/pokeball.png";
+import "./ListDisplay.scss";
 const ListDisplay = () => {
-  
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const pokemonData = useSelector((state) => state.pokemon.data);
@@ -61,12 +61,15 @@ const ListDisplay = () => {
           <div className="col-3" key={index}>
             <div className="card  mt-4">
               <img
-                className="card-img-top"
+                className="card-img"
                 src={pokemon.sprites.other.home.front_default || pokeball}
                 alt={pokemon.name}
               />
               <div className="card-body">
-                <h5 className="card-title">{pokemon.name}</h5>
+                <h5 className="card-title">Nombre: {pokemon.name}</h5>
+                <h6 className={pokemon.types[0].type?.name}>
+                  Tipo: <span>{pokemon.types[0].type?.name}</span>
+                </h6>
               </div>
             </div>
           </div>

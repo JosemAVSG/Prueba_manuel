@@ -12,14 +12,14 @@ body {
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  background-color: rgb(75, 68, 68);
+  background-color: rgb(167, 81, 81);
 }
 h1 {
   display: flex;
   justify-content: center;
   padding: 20px;
   font-size: 50px;
-  color: #e7e7e7;
+  color: rgb(240, 218, 21);
 }
 .botones {
   display: flex;
@@ -32,5 +32,14 @@ h1 {
 }
 .resultados{
   font-size: 30px;
-  color: #e7e7e7;
+  color: #cfcfcf;
+}
+
+.pokemonlist{
+  margin: 0 auto;
+  width: 80%;
+}
+.map{
+  margin: 0 auto;
+  width: 80%;
 }
