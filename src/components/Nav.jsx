@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import pokeball from '../assets/pokebola.png'
 const Navigation = () => {
   return (
     <>
       <NavContainer>
+        <div>
+          <img alt="pokemon" src={pokeball}></img>
+        </div>
         <div className="links">
           <NavLink
             exact="true"
@@ -33,6 +36,10 @@ const NavContainer = styled.nav`
   h2 {
     color: #ffff;
     font-weight: 800;
+  }
+
+  img{
+    width: 60%;
   }
 
   padding: 1.1rem;

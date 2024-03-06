@@ -29,7 +29,7 @@ function PalindromeChecker() {
   }, [word]);
 
   return (
-    <div>
+    <div className="container">
       <h1>Palindrome Checker</h1>
       <input
         type="text"

@@ -18,7 +18,7 @@ const Home = () => {
           <Button variant="otro">Otro</Button>
         </div>
       </section>
-      <section>
+      <section className="paldinromo" >
         <PalindromeChecker></PalindromeChecker>
       </section>
     </div>

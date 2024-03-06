@@ -1,4 +1,12 @@
 p{
     font-size: 30px;
-    color: #e7e7e7;
+    color: #dbc70d;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+input{
+     padding: 5px;
+    border-radius: 5px;
 }
