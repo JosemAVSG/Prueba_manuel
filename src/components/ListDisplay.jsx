@@ -15,7 +15,7 @@ const ListDisplay = () => {
   const pokemonData = useSelector((state) => state.pokemon.data);
   const pokemonimg = useSelector((state) => state.pokemon.results);
   const combinedPokemonData = useMemo(() => {
-    return { ...pokemonData, ...pokemonimg };
+    return { ...pokemonData, ...pokemonimg};
   }, [pokemonData, pokemonimg]);
   const totalResults = useSelector((state) => state.pag.totalResults);
   const pageS = useSelector((state) => state.pag.pageSize);
@@ -52,24 +52,89 @@ const ListDisplay = () => {
     return <div>Cargando...</div>; // Muestra un mensaje de carga mientras isLoading es true
   }
 
+  const getTypeClassName = (typeName) => {
+    switch (typeName) {
+      case "fire":
+        return "fire-class";
+      case "water":
+        return "water-class";
+      case "grass":
+        return "grass-class";
+      case "bug":
+        return "bug-class";
+      case "normal":
+        return "normal-class";
+      case "poison":
+        return "poison-class";
+      case "electric":
+        return "electric-class";
+      case "ground":
+        return "ground-class";
+      case "fairy":
+        return "fairy-class";
+      case "fighting":
+        return "fighting-class";
+      case "psychic":
+        return "psychic-class";
+      case "rock":
+        return "rock-class";
+      case "ghost":
+        return "ghost-class";
+      default:
+        return "default-class";
+    }
+  };
+ 
   return (
     <div>
       <h1>Lista de Pokémon</h1>
-
-      <div className="row">
+      <div className="pokemonlist">
         {combinedPokemonData.results.map((pokemon, index) => (
-          <div className="col-3" key={index}>
-            <div className="card  mt-4">
+          <div
+            className={`pokemon ${getTypeClassName(
+              pokemon.types[0].type?.name
+            )}`}
+            key={index}
+          >
+            <div className={`mt-4 card`}>
               <img
                 className="card-img"
                 src={pokemon.sprites.other.home.front_default || pokeball}
                 alt={pokemon.name}
               />
+              <div className="pokemon-id">
+                <p>{pokemon.id < 10 ? `#00${pokemon.id}` : pokemon.id < 100 ? `#0${pokemon.id}` : `#${pokemon.id}`}
+              </p>
+              </div>
               <div className="card-body">
                 <h5 className="card-title">Nombre: {pokemon.name}</h5>
-                <h6 className={pokemon.types[0].type?.name}>
-                  Tipo: <span>{pokemon.types[0].type?.name}</span>
+                <h6>
+                  Tipo: <span>{pokemon.types[0].type?.name} </span>
                 </h6>
+                <p className="card-text">
+                  <span>Altura: {pokemon.height}</span>
+                  <span>Peso: {pokemon.weight}</span>
+                </p>
+                <div className="stats">
+                  {pokemon?.stats?.map((stat, index) => (
+                      <h6 key={index} className="statItem">
+                        <span className="statname">{stat.stat?.name}</span>
+                        <progress className="statbar" value={stat.base_stat} max={110}></progress>
+                        <span className="statvalue">{stat.base_stat}</span>
+                      </h6>
+                    ))
+                  }
+               </div>
+               <div className="types">
+                {pokemon.types.map((type, index) => (
+                  <span
+                    key={index}
+                    className={`tipo ${getTypeClassName(type.type?.name)}`}
+                  >
+                    {type.type?.name}
+                  </span>
+                ))}
+               </div>
               </div>
             </div>
           </div>

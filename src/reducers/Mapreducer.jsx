@@ -9,7 +9,6 @@ const Mapreducer = (state = initialState, action) => {
       return { ...state, map: action.payload };
     case "SET_USER_LOCATION":
       return { ...state, isLoadingMap: false, userLocation: action.payload };
-    // Otros cases para manejar diferentes acciones relacionadas con el mapa...
     default:
       return state;
   }

@@ -7,22 +7,16 @@ function PalindromeChecker() {
   const [isPalindrome, setIsPalindrome] = useState(false);
 
   const checkPalindrome = () => {
-    // Elimina los caracteres especiales y convierte todo a minúsculas
   const regex = /[^a-zA-Z0-9]/g;
-    // Convirtiendo en minisculas
     const lowercaseWord = word.toLowerCase().replace(regex, '')
 
-    // voltiando la palabra y comparandola con la original
     const reversedWord = lowercaseWord.split("").reverse().join("");
-
-    // revisar si la palabra reversa es igual a la orginal
     setIsPalindrome(lowercaseWord === reversedWord);
   };
 
-  const isInputEmpty = word.trim() === ""; // Verifica si el campo de entrada está vacío o contiene solo espacios
+  const isInputEmpty = word.trim() === ""; 
 
   useEffect(() => {
-    // Reiniciar el estado de isPalindrome a false cuando el input se vacíe
     if (word.trim() === "") {
       setIsPalindrome(false);
     }
@@ -39,7 +33,7 @@ function PalindromeChecker() {
       />
 
       {isInputEmpty ? (
-        <p>Por favor ingresa una palabra para ver si es un palindromo</p>
+        <strong className="palindrome-advice">Por favor ingresa una palabra para ver si es un palindromo</strong>
       ) : (
         <Button variant="primary" evento={checkPalindrome}>
           Check Palindromo

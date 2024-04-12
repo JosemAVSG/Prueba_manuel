@@ -12,14 +12,14 @@ body {
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  background-color: rgb(167, 81, 81);
+  background-color: #195288
 }
 h1 {
   display: flex;
   justify-content: center;
   padding: 20px;
   font-size: 50px;
-  color: rgb(240, 218, 21);
+  color: rgb(255, 255, 255);
 }
 .botones {
   display: flex;

@@ -1,13 +1,17 @@
-import ListDisplay from "../components/ListDisplay";
+// import ListDisplay from "../components/ListDisplay";
 import Button from "../components/Button";
 import PalindromeChecker from "../components/PalindromeChecker";
-
+import { lazy,Suspense } from "react";
+const ListDisplay = lazy(() => import("../components/ListDisplay"));
 const Home = () => {
   return (
     <div className="App">
-      <div className="pokemonlist">
+      <Suspense fallback={<div>Cargando...</div>}>
+      <div className="w-full">
         <ListDisplay />
       </div>
+        
+      </Suspense>
       <section>
         <h1>Button Styles with Sass</h1>
         <div className="botones">

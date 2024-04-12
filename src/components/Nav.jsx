@@ -57,7 +57,6 @@ const NavContainer = styled.nav`
     padding: 3px;
     font-size: 20px;
     font-weight: 400;
-    font-style: oblique;
     font-family: "Bebas Neue", sans-serif;
   }
   .links {
