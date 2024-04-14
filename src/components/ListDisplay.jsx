@@ -2,8 +2,6 @@ import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPokemonpag,
-  fetchPokemonEvo,
-  fetchPokemonEspecie,
   setLastPage,
   setPages,
   setTotalResults,
@@ -40,8 +38,7 @@ const ListDisplay = () => {
   }, [isLoading, combinedPokemonData, currentPage, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchPokemonEvo(currentPage, pageS)),
-      dispatch(fetchPokemonEspecie(currentPage, pageS)),
+    
       dispatch(fetchPokemonpag(currentPage, pageS))
         .then(() => {
           setIsLoading(false);
