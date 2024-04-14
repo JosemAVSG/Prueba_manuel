@@ -25,6 +25,9 @@ const Navigation = () => {
           >
             Mapa
           </NavLink>
+          <div>
+            <input type="search" placeholder="Buscar"></input>
+          </div>
         </div>
       </NavContainer>
     </>
@@ -44,7 +47,7 @@ const NavContainer = styled.nav`
 
   padding: 1.1rem;
   display: flex;
-  background-color: rgb(167, 0, 0);
+  background-color: rgba(102, 49, 49, 0.767);
   justify-content: space-between;
   align-items: center;
 
@@ -60,6 +63,8 @@ const NavContainer = styled.nav`
     font-family: "Bebas Neue", sans-serif;
   }
   .links {
+    display: flex;
+    align-items: center;
     margin-left: 100px;
   }
 
@@ -78,7 +83,7 @@ const NavContainer = styled.nav`
   }
 
   .active {
-    color: rgb(240, 218, 21);
+    color: rgb(17, 17, 17);
   }
 `;
 

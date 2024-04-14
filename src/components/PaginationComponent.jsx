@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPage } from "../redux/actions";
 import Button from "./Button";
-
+import "./Pagination.scss";
 const Pagination = () => {
   const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ const Pagination = () => {
       ? totalResults
       : pageSize * (currentPage - 1) + pageSize;
   return (
-    <div>
+    <div className="pagination">
       <div className="resultados">
         Total Results:{totalShownPokemons} of {totalResults}
       </div>

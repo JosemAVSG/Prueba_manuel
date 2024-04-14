@@ -1,0 +1,23 @@
+.pagination{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .resultados{
+        margin: 0 5px;
+        background: $primary;
+    }
+    .paginas{
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    .botones{
+        
+        margin: 0 5px;
+        cursor: pointer;
+    }
+}
