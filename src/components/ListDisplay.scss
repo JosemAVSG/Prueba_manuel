@@ -43,9 +43,25 @@
     // Estilos para el tipo "fairy"
     background: pink;
   }
+  &.fighting-class {
+    // Estilos para el tipo "fighting"
+    background: red;
+  }
+  &.psychic-class {
+    // Estilos para el tipo "psychic"
+    background: pink;
+  }
+  &.rock-class {
+    // Estilos para el tipo "rock"
+    background: gray;
+  }
+  &.ghost-class {
+    // Estilos para el tipo "ghost"
+    background: purple;
+  }
   &.default-class {
     // Estilos para el tipo por defecto
-    background: #ffffff;
+    background: #5c5c5c;
   }
   width: 100%;
   height: auto;
@@ -156,6 +172,21 @@
       // Estilos para el tipo "fairy"
       background: rgb(252, 85, 113);
     }
+    &.fighting-class {
+      // Estilos para el tipo "fighting"
+      background: rgb(126, 7, 7);
+    }
+    &.psychic-class {
+      // Estilos para el tipo "psychic"
+      background: rgb(146, 10, 146);
+    }
+    &.rock-class {
+      // Estilos para el tipo "rock"
+      background: rgb(99, 91, 91);
+    }
+    &.ghost-class {
+      // Estilos para el tipo "ghost"
+      background: rgb(87, 87, 87);}
     &.default-class {
       // Estilos para el tipo por defecto
       background: #ffffff;

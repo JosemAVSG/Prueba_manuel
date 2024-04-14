@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPokemonpag,
@@ -9,6 +9,7 @@ import {
 import Pagination from "./PaginationComponent";
 import pokeball from "../assets/pokeball.png";
 import "./ListDisplay.scss";
+import PokeSkeltonCard from "./PokeSkeltonCard";
 const ListDisplay = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -38,20 +39,15 @@ const ListDisplay = () => {
   }, [isLoading, combinedPokemonData, currentPage, dispatch]);
 
   useEffect(() => {
-    
-      dispatch(fetchPokemonpag(currentPage, pageS))
-        .then(() => {
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error.message);
-          setIsLoading(true);
-        });
+    dispatch(fetchPokemonpag(currentPage, pageS))
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error.message);
+        setIsLoading(true);
+      });
   }, [dispatch, currentPage, pageS, totalResults]);
-
-  if (isLoading) {
-    return <div>Cargando...</div>; // Muestra un mensaje de carga mientras isLoading es true
-  }
 
   const getTypeClassName = (typeName) => {
     switch (typeName) {
@@ -89,63 +85,71 @@ const ListDisplay = () => {
   return (
     <div>
       <h1>Lista de Pokémon</h1>
+
       <div className="pokemonlist">
-        {combinedPokemonData.results.map((pokemon, index) => (
-          <div
-            className={`pokemon ${getTypeClassName(
-              pokemon.types[0].type?.name
-            )}`}
-            key={index}
-          >
-            <div className={`mt-4 card`}>
-              <img
-                className="card-img"
-                src={pokemon.sprites.other.home.front_default || pokeball}
-                alt={pokemon.name}
-              />
-              <div className="pokemon-id">
-                <p>
-                  {pokemon.id < 10
-                    ? `#00${pokemon.id}`
-                    : pokemon.id < 100
-                    ? `#0${pokemon.id}`
-                    : `#${pokemon.id}`}
-                </p>
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Nombre: {pokemon.name}</h5>
-                <p className="card-text">
-                  <span>Altura: {pokemon.height}</span>
-                  <span>Peso: {pokemon.weight}</span>
-                </p>
-                <div className="stats">
-                  {pokemon?.stats?.map((stat, index) => (
-                    <h6 key={index} className="statItem">
-                      <span className="statname">{stat.stat?.name}</span>
-                      <progress
-                        className="statbar"
-                        value={stat.base_stat}
-                        max={110}
-                      ></progress>
-                      <span className="statvalue">{stat.base_stat}</span>
-                    </h6>
-                  ))}
+        {isLoading ? (
+          <PokeSkeltonCard cards={20} />
+        ) : (
+          <>
+            {combinedPokemonData.results.map((pokemon, index) => (
+              <div
+                className={`pokemon ${getTypeClassName(
+                  pokemon.types[0].type?.name
+                )}`}
+                key={index}
+              >
+                <div className={`mt-4 card`}>
+                  <img
+                    className="card-img"
+                    src={pokemon.sprites.other.home.front_default || pokeball}
+                    alt={pokemon.name}
+                  />
+                  <div className="pokemon-id">
+                    <p>
+                      {pokemon.id < 10
+                        ? `#00${pokemon.id}`
+                        : pokemon.id < 100
+                        ? `#0${pokemon.id}`
+                        : `#${pokemon.id}`}
+                    </p>
+                  </div>
+                  <div className="card-body">
+                    <h5 className="card-title">Nombre: {pokemon.name}</h5>
+                    <p className="card-text">
+                      <span>Altura: {pokemon.height}</span>
+                      <span>Peso: {pokemon.weight}</span>
+                    </p>
+                    <div className="stats">
+                      {pokemon?.stats?.map((stat, index) => (
+                        <h6 key={index} className="statItem">
+                          <span className="statname">{stat.stat?.name}</span>
+                          <progress
+                            className="statbar"
+                            value={stat.base_stat}
+                            max={110}
+                          ></progress>
+                          <span className="statvalue">{stat.base_stat}</span>
+                        </h6>
+                      ))}
+                    </div>
+                    <div className="types">
+                      {pokemon.types.map((type, index) => (
+                        <span
+                          key={index}
+                          className={`tipo ${getTypeClassName(
+                            type.type?.name
+                          )}`}
+                        >
+                          {type.type?.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="types">
-                  {pokemon.types.map((type, index) => (
-                    <span
-                      key={index}
-                      className={`tipo ${getTypeClassName(type.type?.name)}`}
-                    >
-                      {type.type?.name}
-                    </span>
-                  ))}
-                </div>
-          
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        )}
       </div>
       <Pagination></Pagination>
     </div>
